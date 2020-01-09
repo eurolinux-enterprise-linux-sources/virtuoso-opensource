@@ -9,13 +9,13 @@
 Name:    virtuoso-opensource
 Epoch:   1
 Version: 6.1.6
-Release: 4%{?dist}
+Release: 7%{?dist}
 Summary: A high-performance object-relational SQL database
 
 Group:   Applications/Databases
 # see LICENSE for exception details
 License: GPLv2 with exceptions
-URL:     http://virtuoso.openlinksw.com/wiki/main/ 
+URL:     http://vos.openlinksw.com/owiki/wiki/VOS/
 #URL:     https://github.com/openlink/virtuoso-opensource
 %if 0%{?pre:1}
 Source0: virtuoso-opensource-%{version}-%{pre}.tar.xz
@@ -27,6 +27,7 @@ BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 ## Upstreamable patches
 Patch52: virtuoso-opensource-6.1.0-nodemos_buildfix.patch
 Patch53: virtuoso-opensource-6.1.4-no_strip.patch
+Patch54: virtuoso-opensource-remove-saddr_t-typedef.patch
 
 ## Upstream patches
 
@@ -101,6 +102,7 @@ Requires: %{name} = %{?epoch:%{epoch}:}%{version}-%{release}
 %patch52 -p1 -b .nodemos_buildfix
 %endif
 %patch53 -p1 -b .no_strip
+%patch54 -p1 -b .remove-saddr_t-typedef
 
 # required by both patch52/53
 ./autogen.sh
@@ -217,6 +219,16 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Mon Feb 18 2019 Jan Grulich <jgrulich@redhat.com> - 1:6.1.6-7
+- Fix URL
+  Resolves: bz#1583962
+
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 1:6.1.6-6
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 1:6.1.6-5
+- Mass rebuild 2013-12-27
+
 * Tue May 28 2013 Lukáš Tinkl <ltinkl@redhat.com> - 1:6.1.6-4
 - drop obsolete and unused (external iodbc) patch
 
