@@ -9,7 +9,7 @@
 Name:    virtuoso-opensource
 Epoch:   1
 Version: 6.1.6
-Release: 6%{?dist}
+Release: 4%{?dist}
 Summary: A high-performance object-relational SQL database
 
 Group:   Applications/Databases
@@ -217,12 +217,6 @@ rm -rf %{buildroot}
 
 
 %changelog
-* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 1:6.1.6-6
-- Mass rebuild 2014-01-24
-
-* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 1:6.1.6-5
-- Mass rebuild 2013-12-27
-
 * Tue May 28 2013 Lukáš Tinkl <ltinkl@redhat.com> - 1:6.1.6-4
 - drop obsolete and unused (external iodbc) patch
 
